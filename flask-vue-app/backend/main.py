@@ -91,7 +91,7 @@ def single_game(game_id):
 # Removing the game and updating
 def remove_game(game_id):
     for game in GAMES:
-        if game['id'] == 'game_id':
+        if game['id'] == game_id:
             GAMES.remove(game)
             return True
     return False
