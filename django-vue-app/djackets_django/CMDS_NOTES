@@ -1,0 +1,137 @@
+BE setup --
+pip3 install django - ok
+pip3 install django-rest-framework - ok
+pip3 install django-cors-headers
+pip3 install djoser (and update djoser urls in urls.ppy of project folder)
+pip3 install pillow
+pip3 insatll stripe
+django-admin startproject djackets_django
+
+// initializing the  DB??
+python3 manage.py makemigrations --> creates migrations file
+
+python3 manage.py migrate --> to run the migrations file 
+(Now we will get all the tables in the log)
+
+python3 manage.py createsuperuser --> to setup the admin creds for the DB
+
+python3 manage.py runserver --> to run the app
+
+FE SETUP
+Vue installation
+vue create /project-name/
+
+In Index.html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+Next install 'bulma' styling library, similar to bootstrap
+
+BASE FE setup-
+adding header, body, footer
+
+Creating Django App and Data Models for the products- 
+1. python3 manage.py startapp product --> to create an app
+2. Go to 23:00 to understand each file
+3. add the app file name in the settings filename
+
+4. Create the DATA MODELS of 'Category' table --
+5. Update the tables to the DB:
+    5a. python3 manage.py makemigrations --> creates migrations file
+    5b. python3 manage.py migrate --> to run the migrations file for updating the data models created
+        (Now we will get all the tables in the log)
+
+6. 4. Create the DATA MODELS of 'Product' table --
+7. Update the tables to the DB:
+    7a. python3 manage.py makemigrations --> creates migrations file
+    7b. python3 manage.py migrate --> to run the migrations file for updating the data models created
+        (Now we will get all the tables in the log)
+
+8. setup media url for uploads
+
+CREATE SERAILIZER AND VIEWS for the products-
+9. Create a serializers.py in the Products app to define the 'ProductSerializer'
+10. Utilize the serializers.py in respective views.py to configure the fetch data(kind of API structure)
+11. Update the local urls.py(in project app) to make it to be know where it is available
+12. Make it available at the project level(urls.py at djacket.vue) so that it can be accessible across the app
+13. Setup admin page by registering your 'Category' and 'Product' data models over there via admin.py
+14. Utilize the admin page to add new categories and products
+
+SETUP FE- Home pages
+15. setup basic Home.vue for landing page
+16. setup api call for the home page -> ../latest-products/ API route call
+17. Note that CORS issue might come and can be resolved by -
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
+
+View A Product
+Create viewset in Django
+18. create ProductDetails() in views.py)(note the '/' in URLS and the '_' undrescores)
+19. Mention it as a available point in urls.py(local)
+
+Create Vue page for showing product
+20. Make a Product.vue with the API calls being set ('/')
+
+Add Link to detail page
+Done in step 19
+
+
+SETUP The opp VUEX?STATE
+21. creation of store in the index.js
+
+MAKE IT POSSIBLE TO ADD TO THE CART
+22. code addToCart(){} with localstore in store/index.js
+23. code beforeCreate() with first line in app.vue
+24. code 'computed' with first line in app.vue
+25. setup the click  btn functionnalities along with dependencies on App.vue
+
+IMPLEMENT A LOADING BAR
+26. See github
+
+DOC TITLE setup
+27. document.title = /name/ 
+
+FILTER BY CATEGORY -- 
+28.API error seen, can be skipped temporarily
+
+ADD SEARCH FUNCTIONALITY
+29. setup the @api_view wrt POST call from the search query with qryParams and search for the necessary data in views.py
+30. update the urls.py with search link
+31. Create a Vue Page (Search.vue) 
+32. update search roue in the index.js of routes in vue folder
+
+VIEW CART --
+33. Create a Cart component with local browser logic for storing cart values
+34. Create a supporting cartItem component for the Cart.vue
+35. register the 'Cart' route in index.js
+
+CHANGE CONTENTS OF A CART --
+36. Insert +/- qty and respective value updations with increment,decrement,updateCart and removeFromCart qunatity methods in Cart.vue
+
+SIGN Up mechanism --
+37. Create SignUp page
+38. register signup page
+
+LOG IN Mechanism
+39. Create and register the login.vue mechanism
+
+MY-ACCOUNT Page
+40. Create and register MyAccount page
+
+CHECKOUT
+41. Create and register Checkout and values updation
+
+SIMPLE SUCCESS page
+42. Create and Register Simple Success page
+
+CHECKOUT API and page mechanisms-
+43. Revisit video for reference, a big chunk
+
+
+ORDER LISTING PAGE
+44. Create a sub component called OrderSummary and write an API for getting the list of Orders d
+
+DEPLOYMENT
+45. To be taken later
+
+
+
+
